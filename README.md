@@ -4,6 +4,6 @@
 
 ```wget -qO- https://github.com/MachoDrone/ThrottleCheck/raw/main/ThrottleCheck.sh | bash```
 
-!{}(Active.png)
+![screenshot](Active.png)
 
-!{}(Throttle.png)
+![](Throttle.png)
