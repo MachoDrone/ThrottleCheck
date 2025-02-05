@@ -6,4 +6,4 @@
 
 ![screenshot](Active.png)
 
-![screenshot](Throttle.png)
+![screenshot](z1-Throttle.png)
