@@ -9,4 +9,6 @@ If you see Not Active change to Active, then you are Temperature-Throttled.
 Example of a GPU throttled by Temperature
 ![screenshot](Active.png)
 
+
+Normal View, not throttled.
 ![screenshot](z1-Throttle.png)
