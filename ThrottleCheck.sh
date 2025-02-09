@@ -1,5 +1,5 @@
-echo -e "\n\n\033[32mIf you see an error, run the following commands to update AWK package:\n\033[0m"
-echo -e "\033[32msudo apt-get update\nsudo apt-get upgrade -y\033[0m"
+# echo -e "\n\n\033[32mIf you see an error, run the following commands to update AWK package:\n\033[0m"
+# echo -e "\033[32msudo apt-get update\nsudo apt-get upgrade -y\033[0m"
 
 while true; do
   echo -e "\n$(date '+%Y-%m-%d %H:%M:%S')"
