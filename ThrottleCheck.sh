@@ -35,7 +35,7 @@ while true; do
       IFS=' ' read -r t_limit target_temp <<< "$temp_limits"
       echo -e "MAXTarget: $target_temp°C        GPU T.Limit Temp $t_limit°C        Current Clock $current_clock / $max_clock MHz";
     else
-      echo -e "\033[31mError: Could not fetch temperature limits. Please inform MachoDrone.\033[0m"
+      echo -e "\033[31mError: Could not fetch some additional temperature limits. Please inform MachoDrone.\033[0m"
     fi
   done;
   sleep 10;
