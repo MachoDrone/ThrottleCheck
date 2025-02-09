@@ -1,3 +1,4 @@
+echo -e "\n\n\033[32mTIf you see an error, run the following commands to update AWK package.\nsudo apt-get update\nsudo apt-get upgrade -y\033[0m"
 while true; do
 echo -e "\n$(date '+%Y-%m-%d %H:%M:%S')"
   nvidia-smi --query-gpu=index,gpu_name,fan.speed,pstate,clocks_throttle_reasons.hw_thermal_slowdown,clocks_throttle_reasons.sw_thermal_slowdown,memory.used,memory.total,utilization.gpu,temperature.gpu,power.draw,power.limit,clocks.current.sm,clocks.max.sm --format=csv,noheader,nounits | while IFS=',' read -r id name fan_speed pstate hw_throttle sw_throttle mem_used mem_total gpu_util temp power_draw power_limit current_clock max_clock; do
