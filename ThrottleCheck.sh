@@ -1,5 +1,4 @@
-# echo -e "\n\n\033[32mIf you see an error, run the following commands to update AWK package:\n\033[0m"
-# echo -e "\033[32msudo apt-get update\nsudo apt-get upgrade -y\033[0m"
+#!/bin/bash
 
 while true; do
   echo -e "\n$(date '+%Y-%m-%d %H:%M:%S')"
@@ -21,17 +20,20 @@ while true; do
     echo -e "id:$id   $name   vRAM: $mem_used / $mem_total ($mem_percent%)   GPU_util: $gpu_util%   Power: $power_draw_rounded / $power_limit_rounded W   perf_state: $pstate";
     echo -e "GPUtemp:  $temp°C   Fan: $fan_speed%   HW-throttle: $hw_throttle   SW-throttle: $sw_throttle* -- $cpu_mem_info";
 
-    # Fetching temperature limits with error handling
-    if temp_limits=$(nvidia-smi --query --display=TEMPERATURE | awk 2>/dev/null '
+    # Fetching temperature limits with compatibility for both mawk and gawk
+    temp_limits=$(nvidia-smi --query --display=TEMPERATURE | awk '
     /GPU T.Limit Temp/ {
-        match($0, /: ([0-9-]+) C/, arr); 
-        tlimit=arr[1]
+        split($0, arr, ": "); 
+        split(arr[2], temp, " "); 
+        tlimit=temp[1]
     }
     /GPU Target Temperature/ {
-        match($0, /: ([0-9-]+) C/, arr); 
-        ttarget=arr[1]
+        split($0, arr, ": "); 
+        split(arr[2], temp, " "); 
+        ttarget=temp[1]
     }
-    END {print tlimit " " ttarget}'); then
+    END {print tlimit " " ttarget}')
+    if [[ -n "$temp_limits" ]]; then
       IFS=' ' read -r t_limit target_temp <<< "$temp_limits"
       echo -e "MAXTarget: $target_temp°C        GPU T.Limit Temp $t_limit°C        Current Clock $current_clock / $max_clock MHz";
     else
